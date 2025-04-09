@@ -17,11 +17,11 @@
 # Version: 1.0
 #
 # Usage:
-#   python update_netlify_redirects.py \\
-#     --csv redirects.csv \\
-#     --redirects _redirects \\
-#     --output _redirects_updated \\
-#     --diff redirects_diff.html \\
+#   python update_netlify_redirects.py \
+#     --csv redirects.csv \
+#     --redirects _redirects \
+#     --output _redirects_updated \
+#     --diff redirects_diff.html \
 #     --domain https://your-domain.com
 #
 # Arguments:
@@ -41,10 +41,9 @@
 #   - Requires Python 3.7+ and the `pandas` library
 ################################################################################
 """
-
 import argparse
 import pandas as pd
-from difflib import HtmlDiff, unified_diff
+from difflib import HtmlDiff
 
 def load_csv(csv_path):
     df = pd.read_csv(csv_path)

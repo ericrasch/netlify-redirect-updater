@@ -1,68 +1,94 @@
 
 # Netlify Redirect Updater
 
-A command-line utility to update destination URLs in a Netlify `_redirects` file using a CSV mapping file.
+A command-line utility to update destination URLs in Netlify `_redirects` files using CSV mapping files. Supports both **single-site updates** and **bulk project folder processing** via an interactive shell script.
 
-## Features
+---
 
-- Replaces exact destination URL matches (e.g., `https://domain.com/...`) in `_redirects`
+## ✅ Features
+
+- Updates only exact matches to avoid unintentional changes
 - Preserves formatting and untouched lines
-- Generates an HTML diff report for visual QA
-- Optional domain restriction (e.g., only replace URLs from `https://your-domain.com`)
+- Visual HTML diff report for QA
+- Supports per-project folder structure for bulk processing
+- Virtual environment setup and dependency installation handled automatically
+- Interactive CLI with built-in pre-checks
 
-## Requirements
+---
+
+## 🏁 Quick Start (Recommended)
+
+```bash
+./run_script.sh
+```
+
+This launches an interactive prompt to choose between:
+
+1. Single-site update
+2. Bulk project update
+
+The script:
+- Checks for required files
+- Creates a virtual environment (if needed)
+- Installs `pandas`
+- Runs the appropriate updater
+
+---
+
+## 📁 Folder Structure
+
+### Single-site:
+```
+/your-folder/
+  redirects.csv
+  _redirects
+```
+
+### Bulk (multi-project):
+```
+/projects/
+  /site-a/
+    redirects.csv
+    _redirects
+  /site-b/
+    redirects.csv
+    _redirects
+```
+
+---
+
+## 🧪 CSV Format
+
+Your `redirects.csv` must have a header:
+
+```
+old_url,new_url
+https://your-site.com/old-path,https://your-site.com/new-path
+```
+
+---
+
+## ⚙️ Dependencies
 
 - Python 3.7+
-- `pandas`
+- `pandas` (auto-installed when running `run_script.sh`)
+- Works best in Unix-like environments (macOS, Linux)
 
-## Installation
+---
 
-Clone the repository:
+## 📂 Included Files
 
-```bash
-git clone git@github.com:ericrasch/netlify-redirect-updater.git
-cd netlify-redirect-updater
-```
+| File | Purpose |
+|------|---------|
+| `run_script.sh` | Interactive runner for both modes |
+| `update_netlify_redirects.py` | Single-site updater |
+| `bulk_update_redirects.py` | Bulk folder updater |
+| `requirements.txt` | Python dependency list |
+| `/examples/` | Sample `_redirects` and `redirects.csv` files |
 
-Install dependencies:
+---
 
-```bash
-pip install pandas
-```
+## 📝 License
 
-## Checklist before you start
-- CSV file: Must have a header row with:
-  - Column A = old_url (full URL to match)
-  - Column B = new_url (URL to replace it with)
-- Netlify _redirects file: Standard format
-- Optional: Domain filter (e.g. https://your-domain.com), or generic fallback (any URL starting with https://)
-
-## Usage
-
-```bash
-python update_netlify_redirects.py \
-  --csv redirects.csv \
-  --redirects _redirects \
-  --output _redirects_updated \
-  --diff redirects_diff.html \
-  --domain https://your-domain.com
-```
-
-### Arguments
-
-| Flag         | Description                                      | Required |
-|--------------|--------------------------------------------------|----------|
-| `--csv`      | CSV file with `old_url,new_url` columns          | ✅       |
-| `--redirects`| Original Netlify `_redirects` file               | ✅       |
-| `--output`   | Path to write the updated `_redirects` file      | ✅       |
-| `--diff`     | Path to write the HTML diff                      | ✅       |
-| `--domain`   | (Optional) Restrict updates to this domain       | ❌       |
-
-## Output
-
-- Updated `_redirects` file
-- Visual HTML diff report
-
-## License
-
-MIT
+MIT — Eric Rasch  
+https://github.com/ericrasch/netlify-redirect-updater
