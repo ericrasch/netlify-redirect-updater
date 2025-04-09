@@ -88,7 +88,9 @@ if [ "$MODE" == "1" ]; then
     --diff "$DIFF" \
     --domain "$DOMAIN"
 
+  echo ""
   echo "📂 Output written to: $OUTPUT_DIR"
+  echo "🔎 View diff file: file://$(pwd)/$DIFF"
 
 else
   PROJECTS_DIR="./projects"
