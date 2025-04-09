@@ -1,8 +1,17 @@
-
+# Python bytecode
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+
+# Virtualenv
+.venv/
+venv/
 .env
-.redirects_updated*
+
+# Output files (matches both bulk and single mode)
+output/
+*_redirects_updated
 redirects_diff.html
+
+# Local working files (CSV/redirect inputs at project root)
+redirects.csv
+_redirects
