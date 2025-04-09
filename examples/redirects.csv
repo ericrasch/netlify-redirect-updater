@@ -1,0 +1,3 @@
+old_url,new_url
+https://your-domain.com/old-path,https://your-domain.com/new-path
+https://your-domain.com/legacy-page,https://your-domain.com/updated-page

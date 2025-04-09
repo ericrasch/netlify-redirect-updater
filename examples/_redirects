@@ -1,0 +1,5 @@
+# Example Netlify _redirects file
+
+/old-path                             https://your-domain.com/old-path                            301
+/legacy-page                          https://your-domain.com/legacy-page                         301
+/untouched                            https://your-domain.com/keep-this                           301

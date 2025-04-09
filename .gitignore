@@ -1,0 +1,8 @@
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.redirects_updated*
+redirects_diff.html
