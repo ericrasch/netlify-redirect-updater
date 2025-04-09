@@ -78,7 +78,7 @@ if [ "$MODE" == "1" ]; then
   REDIRECTS="_redirects"
   OUTPUT="$OUTPUT_DIR/_redirects_updated"
   DIFF="$OUTPUT_DIR/redirects_diff.html"
-  DOMAIN="https://your-domain.com"
+  DOMAIN=""
 
   echo "🚀 Running single-site update..."
   python3 update_netlify_redirects.py \
@@ -92,7 +92,7 @@ if [ "$MODE" == "1" ]; then
 
 else
   PROJECTS_DIR="./projects"
-  DOMAIN="https://your-domain.com"
+  DOMAIN=""
 
   echo "🚀 Running bulk project update..."
   python3 bulk_update_redirects.py \
